@@ -3,8 +3,10 @@ import {
   Controller,
   Delete,
   Get,
+  HttpStatus,
   Inject,
   Param,
+  ParseUUIDPipe,
   Post,
   Put,
 } from '@nestjs/common';
@@ -30,7 +32,13 @@ export class ProductsController {
   }
 
   @Get('/:id')
-  getOne(@Param('id') id: string): Promise<ProductInterface> {
+  getOne(
+    @Param(
+      'id',
+      new ParseUUIDPipe({ errorHttpStatusCode: HttpStatus.FORBIDDEN }),
+    )
+    id: string,
+  ): Promise<ProductInterface> {
     return this.productsService.getOne(id);
   }
 
@@ -40,7 +48,13 @@ export class ProductsController {
   }
 
   @Delete('/:id')
-  remove(@Param('id') id: string): Promise<RemoveProductResponse> {
+  remove(
+    @Param(
+      'id',
+      new ParseUUIDPipe({ errorHttpStatusCode: HttpStatus.FORBIDDEN }),
+    )
+    id: string,
+  ): Promise<RemoveProductResponse> {
     return this.productsService.remove(id);
   }
 }
