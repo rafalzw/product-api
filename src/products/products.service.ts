@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
-import { ProductInterface } from '../types/product';
+import { ProductInterface, RemoveProductResponse } from '../types/product';
 import { Product } from './product.entity';
 import { UpdateProductDto } from './dto/update-product.dto';
 
@@ -37,5 +37,13 @@ export class ProductsService {
     await product.save();
 
     return product;
+  }
+
+  async remove(id: string): Promise<RemoveProductResponse> {
+    const findProduct = await this.getOne(id);
+
+    await findProduct.remove();
+
+    return { isSuccess: true };
   }
 }

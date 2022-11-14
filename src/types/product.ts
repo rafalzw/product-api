@@ -4,3 +4,7 @@ export interface ProductInterface {
   price: number;
   updateDate?: Date;
 }
+
+export type RemoveProductResponse = {
+  isSuccess: boolean;
+};

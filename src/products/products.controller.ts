@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Inject,
   Param,
@@ -9,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
-import { ProductInterface } from '../types/product';
+import { ProductInterface, RemoveProductResponse } from '../types/product';
 import { UpdateProductDto } from './dto/update-product.dto';
 
 @Controller('products')
@@ -36,5 +37,10 @@ export class ProductsController {
   @Put('/')
   update(@Body() updateProduct: UpdateProductDto): Promise<ProductInterface> {
     return this.productsService.update(updateProduct);
+  }
+
+  @Delete('/:id')
+  remove(@Param('id') id: string): Promise<RemoveProductResponse> {
+    return this.productsService.remove(id);
   }
 }
