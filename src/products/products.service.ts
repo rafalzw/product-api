@@ -17,7 +17,11 @@ export class ProductsService {
     return newProduct;
   }
 
-  async findAll() {
+  async getAll() {
     return await Product.find();
+  }
+
+  async getOne(id: string) {
+    return await Product.findOneOrFail({ where: { id } });
   }
 }
