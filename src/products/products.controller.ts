@@ -1,4 +1,4 @@
-import { Body, Controller, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductInterface } from '../types/product';
@@ -12,5 +12,10 @@ export class ProductsController {
   @Post('/')
   create(@Body() product: CreateProductDto): Promise<ProductInterface> {
     return this.productsService.create(product);
+  }
+
+  @Get('/')
+  getAll(): Promise<ProductInterface[]> {
+    return this.productsService.findAll();
   }
 }

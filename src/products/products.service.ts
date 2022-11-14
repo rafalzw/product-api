@@ -16,4 +16,8 @@ export class ProductsService {
 
     return newProduct;
   }
+
+  async findAll() {
+    return await Product.find();
+  }
 }
