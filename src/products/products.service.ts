@@ -1,6 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
-import { RemoveProductResponse } from '../types/product';
 import { Product } from './product.entity';
 import { UpdateProductDto } from './dto/update-product.dto';
 
@@ -44,11 +43,9 @@ export class ProductsService {
     return updatedProduct;
   }
 
-  async remove(id: string): Promise<RemoveProductResponse> {
-    const findProduct = await this.getOne(id);
+  async remove(id: string): Promise<Product> {
+    const removedProduct = await this.getOne(id);
 
-    await findProduct.remove();
-
-    return { isSuccess: true };
+    return await removedProduct.remove();
   }
 }

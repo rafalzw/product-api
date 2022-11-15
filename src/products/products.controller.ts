@@ -12,7 +12,6 @@ import {
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
-import { RemoveProductResponse } from '../types/product';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './product.entity';
 
@@ -49,13 +48,13 @@ export class ProductsController {
   }
 
   @Delete('/:id')
-  remove(
+  removeProduct(
     @Param(
       'id',
       new ParseUUIDPipe({ errorHttpStatusCode: HttpStatus.FORBIDDEN }),
     )
     id: string,
-  ): Promise<RemoveProductResponse> {
+  ): Promise<Product> {
     return this.productsService.remove(id);
   }
 }
