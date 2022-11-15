@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
-import { ProductInterface, RemoveProductResponse } from '../types/product';
+import { RemoveProductResponse } from '../types/product';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './product.entity';
 
@@ -33,18 +33,18 @@ export class ProductsController {
   }
 
   @Get('/:id')
-  getOne(
+  getOneProduct(
     @Param(
       'id',
       new ParseUUIDPipe({ errorHttpStatusCode: HttpStatus.FORBIDDEN }),
     )
     id: string,
-  ): Promise<ProductInterface> {
+  ): Promise<Product> {
     return this.productsService.getOne(id);
   }
 
   @Put('/')
-  update(@Body() updateProduct: UpdateProductDto): Promise<ProductInterface> {
+  updateProduct(@Body() updateProduct: UpdateProductDto): Promise<Product> {
     return this.productsService.update(updateProduct);
   }
 

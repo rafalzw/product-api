@@ -22,25 +22,26 @@ export class ProductsService {
     return await Product.find();
   }
 
-  async getOne(id: string) {
+  async getOne(id: string): Promise<Product> {
     const product = await Product.findOne({ where: { id } });
+
     if (!product) {
       throw new HttpException('Product not found!', HttpStatus.BAD_REQUEST);
     }
     return product;
   }
 
-  async update(updateProduct: UpdateProductDto) {
+  async update(updateProduct: UpdateProductDto): Promise<Product> {
     const { id, name, price } = updateProduct;
-    const product = await this.getOne(id);
+    const updatedProduct = await this.getOne(id);
 
-    product.name = name;
-    product.price = price;
-    product.updateDate = new Date();
+    updatedProduct.name = name;
+    updatedProduct.price = price;
+    updatedProduct.updateDate = new Date();
 
-    await product.save();
+    await updatedProduct.save();
 
-    return product;
+    return updatedProduct;
   }
 
   async remove(id: string): Promise<RemoveProductResponse> {
