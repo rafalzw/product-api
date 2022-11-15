@@ -1,12 +1,12 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
-import { ProductInterface, RemoveProductResponse } from '../types/product';
+import { RemoveProductResponse } from '../types/product';
 import { Product } from './product.entity';
 import { UpdateProductDto } from './dto/update-product.dto';
 
 @Injectable()
 export class ProductsService {
-  async create(product: CreateProductDto): Promise<ProductInterface> {
+  async create(product: CreateProductDto): Promise<Product> {
     const { name, price } = product;
     const newProduct = new Product();
 

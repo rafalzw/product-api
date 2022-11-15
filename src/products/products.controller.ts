@@ -14,6 +14,7 @@ import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductInterface, RemoveProductResponse } from '../types/product';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { Product } from './product.entity';
 
 @Controller('products')
 export class ProductsController {
@@ -22,7 +23,7 @@ export class ProductsController {
   ) {}
 
   @Post('/')
-  create(@Body() product: CreateProductDto): Promise<ProductInterface> {
+  createProduct(@Body() product: CreateProductDto): Promise<Product> {
     return this.productsService.create(product);
   }
 
