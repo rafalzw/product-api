@@ -1,7 +1,9 @@
 // export const config = {
-//   dbHost: '',
-//   dbPort: ,
-//   dbUsername: '',
-//   dbPassword: '',
-//   dbDatabase: '',
+//   port: 3000,
+//
+//   dbHost: "",
+//   dbPort:,
+//   dbUsername: "",
+//   dbPassword: "",
+//   dbDatabase: ""
 // };
