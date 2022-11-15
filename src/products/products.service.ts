@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductInterface, RemoveProductResponse } from '../types/product';
 import { Product } from './product.entity';
@@ -23,7 +23,11 @@ export class ProductsService {
   }
 
   async getOne(id: string) {
-    return await Product.findOneOrFail({ where: { id } });
+    const product = await Product.findOne({ where: { id } });
+    if (!product) {
+      throw new HttpException('Product not found!', HttpStatus.BAD_REQUEST);
+    }
+    return product;
   }
 
   async update(updateProduct: UpdateProductDto) {
