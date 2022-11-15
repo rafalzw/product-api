@@ -28,7 +28,7 @@ export class ProductsController {
   }
 
   @Get('/')
-  getAll(): Promise<ProductInterface[]> {
+  getAllProducts(): Promise<Product[]> {
     return this.productsService.getAll();
   }
 
