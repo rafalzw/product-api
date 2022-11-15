@@ -4,20 +4,24 @@ import {
   IsNumber,
   IsString,
   IsUUID,
-  NotEquals,
+  MaxLength,
 } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateProductDto implements ProductInterface {
   @IsNotEmpty()
   @IsUUID(4, { each: true })
+  @ApiProperty()
   id: string;
 
   @IsNotEmpty()
   @IsString()
+  @MaxLength(100)
+  @ApiProperty()
   name: string;
 
   @IsNotEmpty()
   @IsNumber()
-  @NotEquals(0)
+  @ApiProperty()
   price: number;
 }

@@ -1,13 +1,16 @@
 import { ProductInterface } from '../../types/product';
-import { IsNotEmpty, IsNumber, IsString, NotEquals } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateProductDto implements ProductInterface {
   @IsNotEmpty()
   @IsString()
+  @MaxLength(100)
+  @ApiProperty()
   name: string;
 
   @IsNotEmpty()
   @IsNumber()
-  @NotEquals(0)
+  @ApiProperty()
   price: number;
 }

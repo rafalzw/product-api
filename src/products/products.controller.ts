@@ -14,6 +14,7 @@ import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './product.entity';
+import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
 
 @Controller('products')
 export class ProductsController {
@@ -22,16 +23,19 @@ export class ProductsController {
   ) {}
 
   @Post('/')
+  @ApiCreatedResponse({ description: 'Create Product' })
   createProduct(@Body() product: CreateProductDto): Promise<Product> {
     return this.productsService.create(product);
   }
 
   @Get('/')
+  @ApiOkResponse({ description: 'List of Products' })
   getAllProducts(): Promise<Product[]> {
     return this.productsService.getAll();
   }
 
   @Get('/:id')
+  @ApiOkResponse({ description: 'One Product Details' })
   getOneProduct(
     @Param(
       'id',
@@ -43,11 +47,13 @@ export class ProductsController {
   }
 
   @Put('/')
+  @ApiOkResponse({ description: 'Updated Product' })
   updateProduct(@Body() updateProduct: UpdateProductDto): Promise<Product> {
     return this.productsService.update(updateProduct);
   }
 
   @Delete('/:id')
+  @ApiOkResponse({ description: 'Removed Product' })
   removeProduct(
     @Param(
       'id',
