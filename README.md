@@ -4,7 +4,8 @@
 * [Technologies Used](#technologies-used)
 * [Setup](#setup)
 * [Endpoints](#endpoints)
-  * [Create Product](#create-product)  
+  * [Swagger UI](#swagger-ui)  
+  * [Create Product](#create-product) 
   * [List of Products](#list-of-products)
   * [One Product Details](#one-product-details)
   * [Update Product](#update-product)
@@ -30,6 +31,15 @@ $ yarn run
 
 ## Endpoints
 
+----
+> #### Swagger UI
+SwaggerModule automatically reflects all endpoints.
+
+* **URL**
+
+  /api
+
+----
 > #### Create Product
 Returns json data about created product.
 
@@ -64,6 +74,7 @@ Returns json data about created product.
 
     * **Code:** 400 BAD REQUEST <br/>
 
+----
 > #### List of Products
 Returns json data about a list of products.
 
@@ -99,6 +110,8 @@ Returns json data about a list of products.
 * **Error Response:**
 
     * **Code:** 400 BAD REQUEST <br/>
+
+----
 > #### One Product Details
 Returns json data about one product.
 
@@ -128,7 +141,7 @@ Returns json data about one product.
 * **Error Response:**
 
     * **Code:** 400 BAD REQUEST <br/>
-  
+----
 > #### Update Product
 Returns json data about updated product.
 
@@ -164,6 +177,7 @@ Returns json data about updated product.
 
     * **Code:** 400 BAD REQUEST <br/>
 
+----
 > #### Remove Product
 Returns json data about removed product.
 
