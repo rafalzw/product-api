@@ -1,8 +1,8 @@
 {
   "name": "product-api",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
-  "author": "",
+  "author": "RafalZw",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
