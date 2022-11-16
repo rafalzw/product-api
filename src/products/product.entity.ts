@@ -19,6 +19,7 @@ export class Product extends BaseEntity implements ProductInterface {
   price: number;
 
   @Column({
+    type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP',
   })
   updateDate: Date;
